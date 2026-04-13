@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   Shield, Users, Key, Search, MoreVertical, Lock, Unlock,
   AlertTriangle, CheckCircle2, Clock, UserCheck, RefreshCw,
-  Download, Eye, EyeOff, Copy, X, Hash
+  Download, Eye, EyeOff, Copy, X, Hash, FileCheck
 } from 'lucide-react';
 import { nip19 } from 'nostr-tools';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -21,6 +21,7 @@ import { AppLayout } from '@/components/AppLayout';
 import { useCustodialAuth } from '@/hooks/useCustodialAuth';
 import { getAllAccounts, type UserAccount } from '@/lib/custodialKeys';
 import { useToast } from '@/hooks/useToast';
+import { ComplianceAuditTable } from '@/components/admin/ComplianceAuditTable';
 
 interface RecoveryRequest {
   id: string;
@@ -391,7 +392,7 @@ export default function AdminPage() {
         </div>
 
         <Tabs defaultValue="users">
-          <TabsList className="grid grid-cols-3 max-w-sm">
+          <TabsList className="grid grid-cols-4 max-w-xl">
             <TabsTrigger value="users">
               <Users className="h-4 w-4 mr-2" />
               Users
@@ -402,6 +403,10 @@ export default function AdminPage() {
               {stats.pendingRecovery > 0 && (
                 <Badge className="ml-1.5 text-[9px] px-1.5 py-0 bg-destructive text-white">{stats.pendingRecovery}</Badge>
               )}
+            </TabsTrigger>
+            <TabsTrigger value="compliance">
+              <FileCheck className="h-4 w-4 mr-2" />
+              Compliance
             </TabsTrigger>
             <TabsTrigger value="audit">
               <Clock className="h-4 w-4 mr-2" />
@@ -619,6 +624,11 @@ export default function AdminPage() {
                 </div>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          {/* Compliance Audit Tab */}
+          <TabsContent value="compliance" className="mt-5">
+            <ComplianceAuditTable />
           </TabsContent>
 
           {/* Audit Log Tab */}
