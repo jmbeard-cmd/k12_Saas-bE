@@ -293,6 +293,22 @@ export default function GuardianPortalPage() {
           </div>
         </div>
 
+        {/* Compliance quick-access */}
+        <Card className="border-amber-200 bg-amber-50/50">
+          <CardContent className="p-4 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Shield className="h-5 w-5 text-amber-600" />
+              <div>
+                <p className="font-semibold text-sm">Compliance & Consent Forms</p>
+                <p className="text-xs text-muted-foreground">FERPA · Media Release · OK ICAP — sign with your Nostr key</p>
+              </div>
+            </div>
+            <Button variant="outline" size="sm" className="gap-1 border-amber-300" onClick={() => navigate('/guardian/compliance')}>
+              Review Forms <ChevronRight className="h-3.5 w-3.5" />
+            </Button>
+          </CardContent>
+        </Card>
+
         {/* Footer */}
         <div className="text-center text-xs text-muted-foreground pt-4 border-t border-border flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
           <span>Connected to <code className="font-mono text-primary">wss://beginningend.com</code></span>

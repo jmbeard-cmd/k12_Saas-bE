@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, BookOpen, Users, Bell, Settings,
   LogOut, GraduationCap, Menu, Shield, MessageSquare,
-  BarChart2, School, ChevronDown, UserCircle, Award, Wrench, Heart
+  BarChart2, School, ChevronDown, UserCircle, Award, Wrench, Heart, FileCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -32,6 +32,7 @@ const navItems: NavItem[] = [
   { label: 'Messages', href: '/messages', icon: MessageSquare },
   { label: 'Directory', href: '/directory', icon: Users },
   { label: 'Guardian Portal', href: '/guardian-portal', icon: Heart, roles: ['parent', 'admin'] },
+  { label: 'Compliance', href: '/guardian/compliance', icon: FileCheck, roles: ['parent', 'admin'] },
   { label: 'Reports', href: '/reports', icon: BarChart2, roles: ['teacher', 'admin'] },
   { label: 'Teacher Tools', href: '/teacher-tools', icon: Wrench, roles: ['teacher', 'admin'] },
   { label: 'Admin Panel', href: '/admin', icon: Shield, roles: ['admin'] },
@@ -83,7 +84,7 @@ export function AppLayout({ children }: AppLayoutProps) {
           const Icon = item.icon;
           const isActive = location.pathname === item.href ||
             location.pathname.startsWith(item.href + '/') ||
-            (item.href === '/guardian-portal' && location.pathname.startsWith('/guardian'));
+            (item.href === '/guardian-portal' && location.pathname.startsWith('/guardian') && !location.pathname.startsWith('/guardian/compliance'));
           return (
             <Link
               key={item.href}

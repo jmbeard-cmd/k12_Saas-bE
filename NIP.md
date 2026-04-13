@@ -118,6 +118,95 @@ additional custom tags:
 
 ---
 
+## kind:38467 — Compliance Consent Record
+
+An **addressable event** published by a **parent/guardian** to record their signed
+consent or acknowledgement for a specific legal compliance form. Because it is
+addressable, the latest version of each consent record per parent×form type is
+the authoritative state.
+
+### Who publishes it
+
+Parents and guardians sign and publish these events using their custodial Nostr
+keypair. The `d` tag uniquely identifies a parent×student×form combination so
+that any update (e.g., revoking consent) replaces the prior event on the relay.
+
+### Supported form types (`ok-form-type` tag values)
+
+| Value         | Description                                                     |
+| ------------- | --------------------------------------------------------------- |
+| `ferpa`       | FERPA — Family Educational Rights and Privacy Act consent       |
+| `media`       | Media Release — Authorization to photograph/record/publish      |
+| `ok-icap`     | Oklahoma Individual Career Academic Plan (ICAP) acknowledgement |
+
+### Event structure
+
+```json
+{
+  "kind": 38467,
+  "pubkey": "<parent-pubkey-hex>",
+  "created_at": <unix-timestamp>,
+  "content": "<optional parent comments or notes>",
+  "tags": [
+    ["d",               "<parent-pubkey>:<student-name-slug>:<form-type>"],
+    ["t",               "oklahoma-k12-compliance"],
+    ["ok-form-type",    "<ferpa|media|ok-icap>"],
+    ["ok-form-version", "<form-version, e.g. 2025-A>"],
+    ["ok-student-name", "<student display name>"],
+    ["ok-school",       "<school name>"],
+    ["ok-signed-at",    "<ISO-8601 timestamp>"],
+    ["ok-consent",      "<granted|denied|revoked>"],
+    ["ok-scope",        "<scope key — for media forms>"],
+    ["ok-parent-name",  "<parent display name>"],
+    ["ok-ip-hash",      "<sha256 of client IP for audit — optional>"],
+    ["alt",             "Compliance consent: <form-type> for <student-name> — <granted|denied>"]
+  ]
+}
+```
+
+### Required tags
+
+| Tag              | Description                                                                 |
+| ---------------- | --------------------------------------------------------------------------- |
+| `d`              | Stable address: `<parent-pubkey>:<student-slug>:<form-type>[:<scope>]`      |
+| `t`              | Must be `oklahoma-k12-compliance` for relay-level filtering                 |
+| `ok-form-type`   | Form type identifier (`ferpa`, `media`, `ok-icap`)                          |
+| `ok-consent`     | Consent status: `granted`, `denied`, or `revoked`                           |
+| `ok-student-name`| Student this consent applies to                                             |
+| `ok-signed-at`   | ISO-8601 timestamp of when the parent clicked Sign                          |
+
+### Optional tags
+
+| Tag                | Description                                                       |
+| ------------------ | ----------------------------------------------------------------- |
+| `ok-form-version`  | Version identifier of the form text presented to the parent       |
+| `ok-school`        | School name                                                       |
+| `ok-scope`         | Specific media scope key (for media forms with multiple scopes)   |
+| `ok-parent-name`   | Display name of the signing parent                                |
+| `alt`              | NIP-31 human-readable fallback description                        |
+
+### Querying
+
+```typescript
+// Fetch all compliance events signed by a specific parent
+const events = await nostr.relay('wss://beginningend.com').query([{
+  kinds: [38467],
+  authors: [parentPubkey],
+  '#t': ['oklahoma-k12-compliance'],
+  limit: 100,
+}]);
+
+// Fetch a specific form type for a specific parent
+const events = await nostr.relay('wss://beginningend.com').query([{
+  kinds: [38467],
+  authors: [parentPubkey],
+  '#ok-form-type': ['ferpa'],
+  limit: 10,
+}]);
+```
+
+---
+
 ## Relay
 
 All Oklahoma K-12 events are published to and read from:

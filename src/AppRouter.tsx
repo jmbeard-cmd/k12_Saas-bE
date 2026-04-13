@@ -17,6 +17,7 @@ import TeacherToolsPage from "./pages/TeacherToolsPage";
 import GuardianPortalPage from "./pages/GuardianPortalPage";
 import GuardianMediaPage from "./pages/GuardianMediaPage";
 import StudentProgressPage from "./pages/StudentProgressPage";
+import CompliancePage from "./pages/CompliancePage";
 import { NIP19Page } from "./pages/NIP19Page";
 import NotFound from "./pages/NotFound";
 
@@ -58,6 +59,7 @@ export function AppRouter() {
         <Route path="/guardian-portal" element={<ProtectedRoute><GuardianPortalPage /></ProtectedRoute>} />
         <Route path="/guardian/media" element={<ProtectedRoute><GuardianMediaPage /></ProtectedRoute>} />
         <Route path="/guardian/progress" element={<ProtectedRoute><StudentProgressPage /></ProtectedRoute>} />
+        <Route path="/guardian/compliance" element={<ProtectedRoute><CompliancePage /></ProtectedRoute>} />
 
         {/* Protected — Admin only */}
         <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
