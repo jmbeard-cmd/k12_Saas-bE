@@ -14,7 +14,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Progress } from '@/components/ui/progress';
 import { AppLayout } from '@/components/AppLayout';
 import { GuardianMediaFeed } from '@/components/guardian/GuardianMediaFeed';
-import { AcademicSnapshot } from '@/components/guardian/AcademicSnapshot';
+import { StudentProgressPanel } from '@/components/guardian/StudentProgressPanel';
 import { SecureMessaging } from '@/components/guardian/SecureMessaging';
 import { useCustodialAuth } from '@/hooks/useCustodialAuth';
 
@@ -280,9 +280,15 @@ export default function GuardianPortalPage() {
             </Card>
           </div>
 
-          {/* ── RIGHT: Academic + Messaging ── */}
+          {/* ── RIGHT: Progress + Messaging ── */}
           <div className="space-y-6">
-            <AcademicSnapshot />
+            <Card>
+              <CardContent className="p-4">
+                <StudentProgressPanel
+                  teacherPubkeys={account?.keys.pubkey ? [account.keys.pubkey] : []}
+                />
+              </CardContent>
+            </Card>
             <SecureMessaging />
           </div>
         </div>
