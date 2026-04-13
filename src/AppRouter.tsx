@@ -13,6 +13,7 @@ import ClassesPage from "./pages/ClassesPage";
 import AssignmentsPage from "./pages/AssignmentsPage";
 import DirectoryPage from "./pages/DirectoryPage";
 import ReportsPage from "./pages/ReportsPage";
+import TeacherToolsPage from "./pages/TeacherToolsPage";
 import { NIP19Page } from "./pages/NIP19Page";
 import NotFound from "./pages/NotFound";
 
@@ -50,6 +51,7 @@ export function AppRouter() {
         <Route path="/assignments" element={<ProtectedRoute><AssignmentsPage /></ProtectedRoute>} />
         <Route path="/directory" element={<ProtectedRoute><DirectoryPage /></ProtectedRoute>} />
         <Route path="/reports" element={<ProtectedRoute><ReportsPage /></ProtectedRoute>} />
+        <Route path="/teacher-tools" element={<ProtectedRoute><TeacherToolsPage /></ProtectedRoute>} />
 
         {/* Protected — Admin only */}
         <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />

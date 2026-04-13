@@ -2,8 +2,8 @@ import { ReactNode, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, BookOpen, Users, Bell, Settings,
-  LogOut, GraduationCap, Menu, X, Shield, MessageSquare,
-  BarChart2, School, ChevronDown, UserCircle, Award
+  LogOut, GraduationCap, Menu, Shield, MessageSquare,
+  BarChart2, School, ChevronDown, UserCircle, Award, Wrench
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -32,6 +32,7 @@ const navItems: NavItem[] = [
   { label: 'Messages', href: '/messages', icon: MessageSquare },
   { label: 'Directory', href: '/directory', icon: Users },
   { label: 'Reports', href: '/reports', icon: BarChart2, roles: ['teacher', 'admin'] },
+  { label: 'Teacher Tools', href: '/teacher-tools', icon: Wrench, roles: ['teacher', 'admin'] },
   { label: 'Admin Panel', href: '/admin', icon: Shield, roles: ['admin'] },
 ];
 
