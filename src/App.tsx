@@ -13,6 +13,7 @@ import { NostrLoginProvider } from '@nostrify/react/login';
 import { AppProvider } from '@/components/AppProvider';
 import { NWCProvider } from '@/contexts/NWCContext';
 import { AppConfig } from '@/contexts/AppContext';
+import { CustodialAuthProvider } from '@/components/CustodialAuthProvider';
 import AppRouter from './AppRouter';
 
 const head = createHead({
@@ -35,9 +36,9 @@ const defaultConfig: AppConfig = {
   theme: "light",
   relayMetadata: {
     relays: [
-      { url: 'wss://relay.ditto.pub', read: true, write: true },
-      { url: 'wss://relay.primal.net', read: true, write: true },
+      { url: 'wss://beginningend.com', read: true, write: true },
       { url: 'wss://relay.damus.io', read: true, write: true },
+      { url: 'wss://relay.primal.net', read: true, write: true },
     ],
     updatedAt: 0,
   },
@@ -49,17 +50,19 @@ export function App() {
       <AppProvider storageKey="nostr:app-config" defaultConfig={defaultConfig}>
         <QueryClientProvider client={queryClient}>
           <NostrLoginProvider storageKey='nostr:login'>
-            <NostrProvider>
-              <NostrSync />
-              <NWCProvider>
-                <TooltipProvider>
-                  <Toaster />
-                  <Suspense>
-                    <AppRouter />
-                  </Suspense>
-                </TooltipProvider>
-              </NWCProvider>
-            </NostrProvider>
+            <CustodialAuthProvider>
+              <NostrProvider>
+                <NostrSync />
+                <NWCProvider>
+                  <TooltipProvider>
+                    <Toaster />
+                    <Suspense>
+                      <AppRouter />
+                    </Suspense>
+                  </TooltipProvider>
+                </NWCProvider>
+              </NostrProvider>
+            </CustodialAuthProvider>
           </NostrLoginProvider>
         </QueryClientProvider>
       </AppProvider>

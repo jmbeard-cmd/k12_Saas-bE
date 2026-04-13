@@ -4,89 +4,87 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Oklahoma K-12 Brand Colors - Navy Blue & Gold */
+    --background: 210 30% 98%;
+    --foreground: 220 40% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 40% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 40% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Oklahoma Navy Blue */
+    --primary: 218 72% 25%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Light Blue Secondary */
+    --secondary: 213 40% 92%;
+    --secondary-foreground: 218 72% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 213 30% 93%;
+    --muted-foreground: 215 20% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Oklahoma Gold accent */
+    --accent: 42 96% 52%;
+    --accent-foreground: 218 72% 15%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 214 25% 87%;
+    --input: 214 25% 87%;
+    --ring: 218 72% 25%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 218 72% 18%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 42 96% 52%;
+    --sidebar-primary-foreground: 218 72% 15%;
+    --sidebar-accent: 218 60% 25%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 218 60% 22%;
+    --sidebar-ring: 42 96% 52%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 220 40% 8%;
+    --foreground: 210 40% 96%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 40% 10%;
+    --card-foreground: 210 40% 96%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 40% 10%;
+    --popover-foreground: 210 40% 96%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 213 75% 55%;
+    --primary-foreground: 220 40% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 218 30% 20%;
+    --secondary-foreground: 210 40% 96%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 218 30% 18%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 42 96% 52%;
+    --accent-foreground: 220 40% 8%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62% 40%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 218 30% 22%;
+    --input: 218 30% 22%;
+    --ring: 213 75% 55%;
+
+    --sidebar-background: 220 40% 6%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 42 96% 52%;
+    --sidebar-primary-foreground: 220 40% 8%;
+    --sidebar-accent: 218 30% 14%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 218 30% 14%;
+    --sidebar-ring: 42 96% 52%;
   }
 }
 
@@ -96,6 +94,73 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/30 shadow-lg;
+  }
+
+  .oklahoma-gradient {
+    background: linear-gradient(135deg, hsl(218, 72%, 18%) 0%, hsl(218, 72%, 28%) 60%, hsl(213, 70%, 35%) 100%);
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, hsl(42, 96%, 45%) 0%, hsl(42, 96%, 60%) 100%);
+  }
+
+  .hero-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(42, 87, 165, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 193, 7, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 50% 80%, rgba(42, 87, 165, 0.1) 0%, transparent 50%);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
 }
