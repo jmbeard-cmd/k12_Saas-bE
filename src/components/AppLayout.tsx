@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, BookOpen, Users, Bell, Settings,
   LogOut, GraduationCap, Menu, Shield, MessageSquare,
-  BarChart2, School, ChevronDown, UserCircle, Award, Wrench
+  BarChart2, School, ChevronDown, UserCircle, Award, Wrench, Heart
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -31,6 +31,7 @@ const navItems: NavItem[] = [
   { label: 'Announcements', href: '/announcements', icon: Bell, badge: '3' },
   { label: 'Messages', href: '/messages', icon: MessageSquare },
   { label: 'Directory', href: '/directory', icon: Users },
+  { label: 'Guardian Portal', href: '/guardian-portal', icon: Heart, roles: ['parent', 'admin'] },
   { label: 'Reports', href: '/reports', icon: BarChart2, roles: ['teacher', 'admin'] },
   { label: 'Teacher Tools', href: '/teacher-tools', icon: Wrench, roles: ['teacher', 'admin'] },
   { label: 'Admin Panel', href: '/admin', icon: Shield, roles: ['admin'] },
@@ -80,7 +81,9 @@ export function AppLayout({ children }: AppLayoutProps) {
       <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
         {filteredNav.map((item) => {
           const Icon = item.icon;
-          const isActive = location.pathname === item.href || location.pathname.startsWith(item.href + '/');
+          const isActive = location.pathname === item.href ||
+            location.pathname.startsWith(item.href + '/') ||
+            (item.href === '/guardian-portal' && location.pathname.startsWith('/guardian'));
           return (
             <Link
               key={item.href}

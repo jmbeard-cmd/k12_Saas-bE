@@ -14,7 +14,14 @@ import { AppProvider } from '@/components/AppProvider';
 import { NWCProvider } from '@/contexts/NWCContext';
 import { AppConfig } from '@/contexts/AppContext';
 import { CustodialAuthProvider } from '@/components/CustodialAuthProvider';
+import { DMProvider, type DMConfig } from '@/components/DMProvider';
+import { PROTOCOL_MODE } from '@/lib/dmConstants';
 import AppRouter from './AppRouter';
+
+const dmConfig: DMConfig = {
+  enabled: true,
+  protocolMode: PROTOCOL_MODE.NIP17_ONLY,
+};
 
 const head = createHead({
   plugins: [
@@ -53,14 +60,16 @@ export function App() {
             <CustodialAuthProvider>
               <NostrProvider>
                 <NostrSync />
-                <NWCProvider>
-                  <TooltipProvider>
-                    <Toaster />
-                    <Suspense>
-                      <AppRouter />
-                    </Suspense>
-                  </TooltipProvider>
-                </NWCProvider>
+                <DMProvider config={dmConfig}>
+                  <NWCProvider>
+                    <TooltipProvider>
+                      <Toaster />
+                      <Suspense>
+                        <AppRouter />
+                      </Suspense>
+                    </TooltipProvider>
+                  </NWCProvider>
+                </DMProvider>
               </NostrProvider>
             </CustodialAuthProvider>
           </NostrLoginProvider>
